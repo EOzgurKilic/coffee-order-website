@@ -34,36 +34,40 @@ $image = $images[$coffeeType] ?? "images/default.jpg";
 
 <link rel="stylesheet" href="css/coffee_detail.css">
 
-<div class="detail-background">
-    <div class="detail-container">
-        <div class="coffee-info">
-            <img src="<?php echo $image; ?>" alt="<?php echo $coffeeType; ?>">
-            <h2><?php echo $coffeeType; ?></h2>
-            <p><?php echo $description; ?></p>
-        </div>
+<!-- ✅ Begin wrapper -->
+<div class="page-wrapper">
+    <div class="detail-background">
+        <div class="detail-container">
+            <div class="coffee-info">
+                <img src="<?php echo $image; ?>" alt="<?php echo $coffeeType; ?>">
+                <h2><?php echo $coffeeType; ?></h2>
+                <p><?php echo $description; ?></p>
+            </div>
 
-        <div class="order-form">
-            <h3>Order Now</h3>
-            <form action="order.php" method="post" oninput="calculateTotal()">
-                <input type="text" name="name" placeholder="First Name" required><br>
-                <input type="text" name="surname" placeholder="Last Name" required><br>
-                <input type="text" name="phone" placeholder="Phone Number" required><br>
-                <textarea name="address" placeholder="Delivery Address" required></textarea><br>
+            <div class="order-form">
+                <h3>Order Now</h3>
+                <form action="order.php" method="post" oninput="calculateTotal()">
+                    <input type="text" name="name" placeholder="First Name" required><br>
+                    <input type="text" name="surname" placeholder="Last Name" required><br>
+                    <input type="text" name="phone" placeholder="Phone Number" required><br>
+                    <textarea name="address" placeholder="Delivery Address" required></textarea><br>
 
-                <input type="hidden" name="coffee_type" value="<?php echo htmlspecialchars($coffeeType); ?>">
-                <input type="hidden" id="price_per_cup" value="<?php echo $price; ?>">
+                    <input type="hidden" name="coffee_type" value="<?php echo htmlspecialchars($coffeeType); ?>">
+                    <input type="hidden" id="price_per_cup" value="<?php echo $price; ?>">
 
-                <label>Quantity:</label>
-                <input type="number" id="quantity" name="quantity" placeholder="Quantity" min="1" required><br>
+                    <label>Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Quantity" min="1" required><br>
 
-                <p><strong>Total Price:</strong> $<span id="total_price">0.00</span></p>
-                <input type="hidden" name="total_price" id="total_price_input">
+                    <p><strong>Total Price:</strong> $<span id="total_price">0.00</span></p>
+                    <input type="hidden" name="total_price" id="total_price_input">
 
-                <button type="submit">Place Order</button>
-            </form>
+                    <button type="submit">Place Order</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+<!-- ✅ End wrapper -->
 
 <script>
 function calculateTotal() {

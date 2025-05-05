@@ -1,4 +1,31 @@
-/* Logo + Brand Tıklanabilir */
+/* Ensure page fills viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background: url('../images/detail_bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+.page-wrapper {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 .logo-link {
     display: flex;
     align-items: center;
@@ -18,25 +45,6 @@
     letter-spacing: 1px;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url('../images/detail_bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #333;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -52,6 +60,7 @@ body {
     background-color: #523c2d;
 }
 
+/* Main content */
 .detail-background {
     padding: 60px 20px;
     display: flex;
@@ -113,13 +122,14 @@ body {
     cursor: pointer;
     font-weight: bold;
     border-radius: 5px;
+    width: 100%;
 }
 
 .order-form button:hover {
     background-color: #523c2d;
 }
 
-/* Footer */
+/* Sticky footer bar */
 .bottom-bar {
     background-color: #3e2c23;
     color: white;
@@ -129,6 +139,7 @@ body {
     padding: 25px 40px;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: auto;
 }
 
 .footer-left {
@@ -151,7 +162,7 @@ body {
 .footer-highlight {
     flex-grow: 1;
     text-align: center;
-    transform: translateX(-30px); /* Hafif sola kaydırma */
+    transform: translateX(-30px);
 }
 
 .footer-highlight p {
