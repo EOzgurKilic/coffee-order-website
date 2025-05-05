@@ -17,17 +17,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $res->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['client_username'] = $username;
-            header("Location: clientprofile.php");
-            exit;
+
+            // ✅ Smart redirect if user came from order page
+            if (isset($_GET['redirect']) && $_GET['redirect'] === 'coffee_detail.php' && isset($_GET['coffee'])) {
+                $coffee = urlencode($_GET['coffee']);
+                header("Location: coffee_detail.php?coffee=$coffee");
+                exit();
+            }
+
+            // Default redirect
+            header("Location: coffees.php");
+            exit();
         } else {
             $error = "Invalid password.";
         }
     } else {
         $error = "User not found.";
     }
-}
-?>
 
+    $stmt->close();
+}
+
+$conn->close();
+?>
 
 <?php include 'header.php'; ?>
 <link rel="stylesheet" href="css/login.css">

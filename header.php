@@ -10,15 +10,15 @@
 
 <!-- ✅ NAVBAR BAŞLANGICI -->
 <div class="navbar">
-    <div class="logo">
-        <a href="coffees.php" class="logo-link">
-            <img src="images/logo.png" alt="Coffee Logo">
-            <span class="brand-name">Our Coffee Brand</span>
-        </a>
-    </div>
+    <a class="logo-link" href="coffees.php">
+        <img src="images/logo.png" alt="Logo">
+        <span class="brand-name">Our Coffee Brand</span>
+    </a>
     <div class="nav-links">
+        <a href="clientprofile.php">Client</a>
         <a href="login.php">Admin Login</a>
         <a href="contact.php">Contact</a>
     </div>
 </div>
+
 <!-- ✅ NAVBAR BİTİŞ -->
