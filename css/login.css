@@ -1,4 +1,4 @@
-/* Ensure page takes full height */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
 }
 
-/* SAYFA ORTALAMA */
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@ body {
     flex: 1;
 }
 
-/* KUTU TASARIMI */
+
 .login-box {
     background-color: white;
     padding: 40px 30px;
@@ -76,7 +76,7 @@ body {
     font-size: 14px;
 }
 
-/* NAVIGATION BAR */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -131,7 +131,7 @@ body {
     background-color: #523c2d;
 }
 
-/* FOOTER BAR */
+
 .bottom-bar {
     background-color: #3e2c23;
     color: white;

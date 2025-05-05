@@ -2,7 +2,7 @@
 session_start();
 include 'db.php';
 
-// If client is not logged in, redirect
+
 if (!isset($_SESSION['client_id']) || !isset($_SESSION['client_username'])) {
     header("Location: clientlogin.php");
     exit();
@@ -29,7 +29,7 @@ $client_id = $_SESSION['client_id'];
 </div>
 
 <?php
-// Fetch orders for this client
+
 $stmt = $conn->prepare("SELECT coffee_type, quantity, total_price, created_at, name, surname, address, status FROM orders WHERE client_id = ? ORDER BY created_at DESC");
 $stmt->bind_param("i", $client_id);
 $stmt->execute();

@@ -59,7 +59,7 @@ include 'header.php';
     }
 
     quantityInput.addEventListener('input', updateTotalPrice);
-    coffeeInput.addEventListener('input', updateTotalPrice); // manuel coffee type değişikliği için
+    coffeeInput.addEventListener('input', updateTotalPrice);
 </script>
 
         <?php

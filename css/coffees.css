@@ -1,4 +1,4 @@
-/* Logo + Brand Tıklanabilir */
+
 .logo-link {
     display: flex;
     align-items: center;
@@ -111,7 +111,7 @@ body {
     opacity: 0.6;
 }
 
-/* Footer */
+
 .bottom-bar {
     background-color: #3e2c23;
     color: white;

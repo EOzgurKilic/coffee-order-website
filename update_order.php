@@ -15,13 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $coffee_type = $_POST['coffee_type'];
     $quantity = intval($_POST['quantity']);
-    $total_price = floatval(str_replace(",", ".", $_POST['total_price'])); // virgülü noktaya çevir
+    $total_price = floatval(str_replace(",", ".", $_POST['total_price'])); 
 
     $stmt = $conn->prepare("UPDATE orders SET name=?, surname=?, phone=?, address=?, coffee_type=?, quantity=?, total_price=? WHERE id=?");
     $stmt->bind_param("ssssssdi", $name, $surname, $phone, $address, $coffee_type, $quantity, $total_price, $id);
 
     if ($stmt->execute()) {
-        header("Location: admin.php"); // güncelleme başarılıysa admin paneline dön
+        header("Location: admin.php"); 
         exit();
     } else {
         echo "Error updating order: " . $conn->error;

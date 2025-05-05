@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
 }
 
-/* FORM STİLİ */
+
 .edit-container {
     display: flex;
     justify-content: center;
@@ -57,7 +57,7 @@ body {
     background-color: #523c2d;
 }
 
-/* NAVBAR */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -117,7 +117,7 @@ body {
     background-color: #523c2d;
 }
 
-/* FOOTER */
+
 .bottom-bar {
     background-color: #3e2c23;
     color: white;

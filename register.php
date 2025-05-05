@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($email) || empty($password)) {
         $error = "All fields are required.";
     } else {
-        // Check if username or email already exists
+
         $stmt = $conn->prepare("SELECT * FROM clients WHERE username = ? OR email = ?");
         $stmt->bind_param("ss", $username, $email);
         $stmt->execute();
@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare("INSERT INTO clients (username, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $username, $email, $hashedPassword);
             if ($stmt->execute()) {
-                // Auto-login the client
+              
                 $_SESSION['client_username'] = $username;
 
-                // Redirect logic
+                
                 if (isset($_GET['redirect']) && $_GET['redirect'] === 'coffee_detail.php' && isset($_GET['coffee'])) {
                     $coffee = urlencode($_GET['coffee']);
                     header("Location: coffee_detail.php?coffee=$coffee");

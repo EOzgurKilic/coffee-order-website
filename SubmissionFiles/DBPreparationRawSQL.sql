@@ -1,0 +1,38 @@
+CREATE DATABASE IF NOT EXISTS coffee_shop;
+USE coffee_shop;
+
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    surname VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+    coffee_type VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL,
+    total_price DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS clients (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE orders
+ADD COLUMN client_id INT NOT NULL,
+ADD FOREIGN KEY (client_id) REFERENCES clients(id);
+
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM orders;
+SET SQL_SAFE_UPDATES = 1;
+
+ALTER TABLE orders
+ADD COLUMN status ENUM('Pending', 'Shipped', 'Delivered') NOT NULL DEFAULT 'Pending';
+
+SELECT * FROM orders;
+SELECT * FROM clients;
+

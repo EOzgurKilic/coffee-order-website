@@ -1,4 +1,4 @@
-/* Ensure page fills viewport */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -14,7 +14,7 @@ html, body {
     flex: 1;
 }
 
-/* Navbar */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -60,7 +60,7 @@ html, body {
     background-color: #523c2d;
 }
 
-/* Main content */
+
 .detail-background {
     padding: 60px 20px;
     display: flex;
@@ -129,7 +129,7 @@ html, body {
     background-color: #523c2d;
 }
 
-/* Sticky footer bar */
+
 .bottom-bar {
     background-color: #3e2c23;
     color: white;

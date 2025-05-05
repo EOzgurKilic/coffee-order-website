@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Coffee Orders</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css"> <!-- Ortak stil -->
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
 
-<!-- ✅ NAVBAR BAŞLANGICI -->
+
 <div class="navbar">
     <a class="logo-link" href="coffees.php">
         <img src="images/logo.png" alt="Logo">
@@ -21,4 +21,4 @@
     </div>
 </div>
 
-<!-- ✅ NAVBAR BİTİŞ -->
+

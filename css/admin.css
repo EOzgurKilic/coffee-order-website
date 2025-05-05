@@ -1,4 +1,4 @@
-/* NAVBAR */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -58,7 +58,7 @@
     background-color: #523c2d;
 }
 
-/* FOOTER */
+
 .bottom-bar {
     background-color: #3e2c23 !important; 
     color: white;
@@ -119,24 +119,24 @@
     font-size: 14px;
     color: #ccc;
 }
-/* Sayfa boyutunu kontrol altına al */
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* İçerik kapsayıcısı */
+
 .page-wrapper {
-    min-height: calc(100vh - 120px); /* footer yüksekliğini çıkarıyoruz */
+    min-height: calc(100vh - 120px); 
     display: flex;
     flex-direction: column;
 }
 
-
 .container {
-    width: 95%;
-    max-width: none;
+    width: fit-content;
+    min-width: 95%;
+    max-width: 100%;
     margin: 40px auto;
     background: white;
     padding: 30px;
@@ -144,6 +144,7 @@ html, body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
 }
+
 
 .container table {
     width: 100%;

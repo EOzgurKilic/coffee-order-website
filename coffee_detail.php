@@ -43,7 +43,7 @@ $image = $images[$coffeeType] ?? "images/default.jpg";
 
 <link rel="stylesheet" href="css/coffee_detail.css">
 
-<!-- ✅ Begin wrapper -->
+
 <div class="page-wrapper">
     <div class="detail-background">
         <div class="detail-container">
@@ -76,7 +76,7 @@ $image = $images[$coffeeType] ?? "images/default.jpg";
         </div>
     </div>
 </div>
-<!-- ✅ End wrapper -->
+
 
 <script>
 function calculateTotal() {
