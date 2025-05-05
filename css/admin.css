@@ -135,18 +135,22 @@ html, body {
 
 
 .container {
-    max-width: 1200px; /* Previously likely 1000px */
+    width: 95%;
+    max-width: none;
     margin: 40px auto;
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
 }
+
 .container table {
     width: 100%;
     border-collapse: collapse;
+    word-wrap: break-word;
 }
+
 
 body {
     margin: 0;
