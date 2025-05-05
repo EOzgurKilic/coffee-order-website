@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+// If the client is not logged in, redirect to login page with redirect back info
+if (!isset($_SESSION['client_logged_in']) || $_SESSION['client_logged_in'] !== true) {
+    $coffeeType = $_GET['coffee'] ?? '';
+    header("Location: clientlogin.php?redirect=coffee_detail.php&coffee=" . urlencode($coffeeType));
+    exit();
+}
+
 include 'header.php';
 
 $coffeeType = $_GET['coffee'] ?? "Unknown";
