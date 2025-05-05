@@ -1,12 +1,15 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Şifre koyduysan buraya eklemelisin
-$password = "";
-$dbname = "coffee_shop";
+$username = "root";
+$password = "1234";  // <-- Replace this with your actual password
+$database = "coffee_shop";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
 
+// Check connection
 if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
+
