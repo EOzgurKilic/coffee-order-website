@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include 'db.php';
 
 $error = '';
@@ -9,34 +8,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Check credentials from database
-    $stmt = $conn->prepare("SELECT * FROM clients WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt = $conn->prepare("SELECT * FROM clients WHERE username = ?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $res = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        $_SESSION['client_logged_in'] = true;
-        $_SESSION['client_username'] = $username;
-
-        // Redirect back to order page if coming from there
-        if (isset($_GET['redirect']) && $_GET['redirect'] === 'coffee_detail.php' && isset($_GET['coffee'])) {
-            $coffee = urlencode($_GET['coffee']);
-            header("Location: coffee_detail.php?coffee=$coffee");
-            exit();
+    if ($res->num_rows === 1) {
+        $user = $res->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['client_username'] = $username;
+            header("Location: clientprofile.php");
+            exit;
         } else {
-            header("Location: coffees.php");
-            exit();
+            $error = "Invalid password.";
         }
     } else {
-        $error = "Invalid username or password.";
+        $error = "User not found.";
     }
-
-    $stmt->close();
 }
-
-$conn->close();
 ?>
+
 
 <?php include 'header.php'; ?>
 <link rel="stylesheet" href="css/login.css">

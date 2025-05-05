@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['client_username'])) {
+    header("Location: clientlogin.php");
+    exit;
+}
 include 'header.php';
 ?>
 
