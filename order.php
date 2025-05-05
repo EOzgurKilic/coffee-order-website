@@ -1,8 +1,15 @@
 <?php
+session_start();
 include 'db.php';
 include 'header.php';
 
+if (!isset($_SESSION['client_id'])) {
+    header("Location: clientlogin.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $client_id = $_SESSION['client_id'];
     $name = $_POST['name'] ?? '';
     $surname = $_POST['surname'] ?? '';
     $phone = $_POST['phone'] ?? '';
@@ -12,8 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $total_price = floatval(str_replace(",", ".", $_POST['total_price'] ?? '0'));
 
     if ($name && $surname && $phone && $address && $coffee_type && $quantity > 0) {
-        $stmt = $conn->prepare("INSERT INTO orders (name, surname, phone, address, coffee_type, quantity, total_price) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssid", $name, $surname, $phone, $address, $coffee_type, $quantity, $total_price);
+        $stmt = $conn->prepare("INSERT INTO orders (client_id, name, surname, phone, address, coffee_type, quantity, total_price) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssssid", $client_id, $name, $surname, $phone, $address, $coffee_type, $quantity, $total_price);
 
         if ($stmt->execute()) {
             ?>
@@ -22,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="confirmation-box">
                     <img src="images/check.png" alt="Success" class="check-icon">
                     <h1>Thank You!</h1>
-                    <p>Your order for <strong><?php echo $quantity . ' ' . $coffee_type; ?></strong> has been received.</p>
+                    <p>Your order for <strong><?php echo $quantity . ' ' . htmlspecialchars($coffee_type); ?></strong> has been received.</p>
                     <p>Total Price: <strong>$<?php echo number_format($total_price, 2); ?></strong></p>
                     <a href="coffees.php" class="back-button">← Back to Menu</a>
                 </div>
