@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($res->num_rows === 1) {
         $user = $res->fetch_assoc();
         if (password_verify($password, $user['password'])) {
+            $_SESSION['client_id'] = $user['id'];
             $_SESSION['client_username'] = $username;
 
             // ✅ Smart redirect if user came from order page
