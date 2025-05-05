@@ -1,0 +1,173 @@
+/* Logo + Brand Tıklanabilir */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-link img {
+    height: 60px;
+    margin-right: 12px;
+}
+
+.brand-name {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background: url('../images/coffee_bg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    background-color: #6b4f3b;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #523c2d;
+}
+
+.coffee-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 60px auto 40px auto;
+    padding: 20px;
+}
+
+.coffee-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #333;
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.coffee-card:hover {
+    transform: scale(1.05);
+}
+
+.coffee-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.coffee-card a {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #6b4f3b;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.coffee-card a:hover {
+    background-color: #523c2d;
+}
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+/* Footer */
+.bottom-bar {
+    background-color: #3e2c23;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo img {
+    height: 70px;
+    width: auto;
+}
+
+.footer-info h2 {
+    margin: 0;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.footer-highlight {
+    flex-grow: 1;
+    text-align: center;
+    transform: translateX(-30px);
+}
+
+.footer-highlight p {
+    margin: 0;
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    color: #f4e2d1;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.footer-hours {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.footer-hours h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.footer-hours p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #ccc;
+}
