@@ -6,6 +6,20 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 
 include 'db.php';
+
+// Handle status update
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['status'])) {
+    $order_id = intval($_POST['order_id']);
+    $new_status = $_POST['status'];
+    $allowed_statuses = ['Pending', 'Shipped', 'Delivered'];
+
+    if (in_array($new_status, $allowed_statuses)) {
+        $stmt = $conn->prepare("UPDATE orders SET status = ? WHERE id = ?");
+        $stmt->bind_param("si", $new_status, $order_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +49,7 @@ include 'db.php';
                     <th>Coffee Type</th>
                     <th>Quantity</th>
                     <th>Total Price ($)</th>
+                    <th>Status</th>
                     <th>Order Date</th>
                     <th>Actions</th>
                 </tr>
@@ -47,13 +62,23 @@ include 'db.php';
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
                                 <td>{$row['id']}</td>
-                                <td>{$row['name']}</td>
-                                <td>{$row['surname']}</td>
-                                <td>{$row['phone']}</td>
-                                <td>{$row['address']}</td>
-                                <td>{$row['coffee_type']}</td>
+                                <td>" . htmlspecialchars($row['name']) . "</td>
+                                <td>" . htmlspecialchars($row['surname']) . "</td>
+                                <td>" . htmlspecialchars($row['phone']) . "</td>
+                                <td>" . htmlspecialchars($row['address']) . "</td>
+                                <td>" . htmlspecialchars($row['coffee_type']) . "</td>
                                 <td>{$row['quantity']}</td>
                                 <td>\${$row['total_price']}</td>
+                                <td>
+                                    <form method='post' style='margin:0;'>
+                                        <input type='hidden' name='order_id' value='{$row['id']}'>
+                                        <select name='status' onchange='this.form.submit()'>
+                                            <option value='Pending'" . ($row['status'] === 'Pending' ? ' selected' : '') . ">Pending</option>
+                                            <option value='Shipped'" . ($row['status'] === 'Shipped' ? ' selected' : '') . ">Shipped</option>
+                                            <option value='Delivered'" . ($row['status'] === 'Delivered' ? ' selected' : '') . ">Delivered</option>
+                                        </select>
+                                    </form>
+                                </td>
                                 <td>{$row['created_at']}</td>
                                 <td>
                                     <a href='edit_order.php?id={$row['id']}'>Edit</a> | 
@@ -62,7 +87,7 @@ include 'db.php';
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='10'>No orders found.</td></tr>";
+                    echo "<tr><td colspan='11'>No orders found.</td></tr>";
                 }
 
                 $conn->close();

@@ -133,10 +133,17 @@ html, body {
     flex-direction: column;
 }
 
-/* İsteğe bağlı: container ortalansın */
+
 .container {
-    flex-grow: 1;
+    max-width: 1200px; /* Previously likely 1000px */
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow-x: auto;
 }
+
 body {
     margin: 0;
     padding: 0;
