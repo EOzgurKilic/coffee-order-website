@@ -7,7 +7,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 include 'db.php';
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['status'])) {
     $order_id = intval($_POST['order_id']);
     $new_status = $_POST['status'];
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['s
         <h1>Admin Panel – Coffee Orders</h1>
         <p><a href="logout.php">Log out</a></p>
 
-        <table border="1" cellpadding="10" cellspacing="0">
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -90,10 +89,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['s
                     echo "<tr><td colspan='11'>No orders found.</td></tr>";
                 }
 
-                $conn->close();
+                $result->data_seek(0); 
                 ?>
             </tbody>
         </table>
+
+       <?php $result->data_seek(0);  ?>
+<?php while ($row = $result->fetch_assoc()): ?>
+    <div class="admin-mobile-card">
+        <p><strong>ID:</strong> <?= $row['id'] ?></p>
+        <p><strong>First Name:</strong> <?= htmlspecialchars($row['name']) ?></p>
+        <p><strong>Last Name:</strong> <?= htmlspecialchars($row['surname']) ?></p>
+        <p><strong>Phone:</strong> <?= htmlspecialchars($row['phone']) ?></p>
+        <p><strong>Address:</strong> <?= htmlspecialchars($row['address']) ?></p>
+        <p><strong>Coffee Type:</strong> <?= htmlspecialchars($row['coffee_type']) ?></p>
+        <p><strong>Quantity:</strong> <?= $row['quantity'] ?></p>
+        <p><strong>Total Price:</strong> $<?= number_format($row['total_price'], 2) ?></p>
+
+    
+        <form method="post" style="margin: 10px 0;">
+            <input type="hidden" name="order_id" value="<?= $row['id'] ?>">
+            <label><strong>Status:</strong></label><br>
+            <select name="status" onchange="this.form.submit()" style="margin-top: 5px;">
+                <option value="Pending" <?= $row['status'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
+                <option value="Shipped" <?= $row['status'] === 'Shipped' ? 'selected' : '' ?>>Shipped</option>
+                <option value="Delivered" <?= $row['status'] === 'Delivered' ? 'selected' : '' ?>>Delivered</option>
+            </select>
+        </form>
+
+        <p><strong>Order Date:</strong> <?= $row['created_at'] ?></p>
+        <p>
+            <a href='edit_order.php?id=<?= $row['id'] ?>'>Edit</a> |
+            <a href='delete_order.php?id=<?= $row['id'] ?>' onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
+        </p>
+    </div>
+<?php endwhile; ?>
+
+
     </div>
 </div>
 

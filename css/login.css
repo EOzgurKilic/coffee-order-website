@@ -192,3 +192,41 @@ body {
     font-size: 14px;
     color: #ccc;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px 10px;
+  }
+
+  .order-history-panel {
+    padding: 20px 15px;
+  }
+
+  .order-table-scroll {
+    display: none;
+  }
+
+  .mobile-order-card {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 14px;
+  }
+
+  .mobile-order-card p {
+    margin: 6px 0;
+  }
+
+  .mobile-order-card strong {
+    color: #6b4f3b;
+  }
+  
+}

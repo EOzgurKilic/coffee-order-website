@@ -173,44 +173,123 @@ body {
 }
 
 
-@media screen and (max-width: 1080px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
-    }
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
-    .nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        margin-top: 10px;
-    }
+  #background-video {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 
-    .coffee-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        gap: 20px;
-    }
-
-    .coffee-card {
-        width: 90%;
-        max-width: 300px;
-        box-sizing: border-box;
-    }
-
-    .bottom-bar {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-left, .footer-highlight, .footer-hours {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: nowrap;
 }
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.logo-link img {
+  height: 40px;
+  width: auto;
+  margin-right: 8px;
+}
+
+.brand-name {
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.nav-links a {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #6b4f3b;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  background-color: #523c2d;
+}
+
+
+  .coffee-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .coffee-card {
+    width: 85% !important;
+    max-width: 350px;
+    box-sizing: border-box;
+    padding: 0.8rem;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .coffee-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  .coffee-card h3 {
+    font-size: 1.1rem;
+    margin-top: 0.4rem;
+    color: #333;
+  }
+
+  .coffee-card p {
+    font-size: 0.95rem;
+    margin: 0.4rem 0;
+    color: #444;
+  }
+
+  .coffee-card a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    background-color: #6b4f3b;
+    color: white;
+    text-decoration: none;
+  }
+
+  .coffee-card a:hover {
+    background-color: #523c2d;
+  }
+}
+
+
+
 

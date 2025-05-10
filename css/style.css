@@ -95,3 +95,96 @@ a:hover {
     font-size: 14px;
     color: #ccc;
 }
+
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: nowrap;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-link img {
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .nav-links a {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    background-color: #6b4f3b;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .nav-links a:hover {
+    background-color: #523c2d;
+  }
+
+   .bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .footer-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo img {
+    width: 70px;
+    height: auto;
+  }
+
+  .footer-info h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .footer-highlight p {
+    font-size: 1rem;
+    margin: 0;
+    transform: none;
+  }
+
+  .footer-hours {
+    text-align: center;
+  }
+
+  .footer-hours h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .footer-hours p {
+    font-size: 0.95rem;
+    margin: 4px 0 0;
+  }
+}
+
+
